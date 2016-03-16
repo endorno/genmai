@@ -19,12 +19,12 @@ func TestTimeStamp_BeforeInsert(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	baknow := now
-	now = func() time.Time {
+	baknow := TimeFunc
+	TimeFunc = func() time.Time {
 		return n
 	}
 	defer func() {
-		now = baknow
+		TimeFunc = baknow
 	}()
 	tm := &TimeStamp{
 		CreatedAt: createdAt,
@@ -58,12 +58,12 @@ func TestTimeStamp_BeforeUpdate(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	baknow := now
-	now = func() time.Time {
+	baknow := TimeFunc
+	TimeFunc = func() time.Time {
 		return n
 	}
 	defer func() {
-		now = baknow
+		TimeFunc = baknow
 	}()
 	tm := &TimeStamp{
 		CreatedAt: createdAt,

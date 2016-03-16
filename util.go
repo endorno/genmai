@@ -7,7 +7,7 @@ import (
 	"unicode"
 )
 
-var now = time.Now // for test.
+var TimeFunc = time.Now // for test.
 
 // ToInterfaceSlice convert to []interface{} from []string.
 func ToInterfaceSlice(slice []string) []interface{} {

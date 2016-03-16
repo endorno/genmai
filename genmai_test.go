@@ -2869,8 +2869,8 @@ func TestDB_SetLogOutput(t *testing.T) {
 	var buf bytes.Buffer
 	db.SetLogOutput(&buf)
 	nowTime := time.Now()
-	now = func() time.Time { return nowTime }
-	defer func() { now = time.Now }()
+	TimeFunc = func() time.Time { return nowTime }
+	defer func() { TimeFunc = time.Now }()
 	timeFormat := nowTime.Format("2006-01-02 15:04:05")
 	obj := &TestTable{Name: "test"}
 	if _, err := db.Insert(obj); err != nil {
@@ -2955,8 +2955,8 @@ func TestDB_SetLogFormat(t *testing.T) {
 			t.Fatal(err)
 		}
 		nowTime := time.Now()
-		now = func() time.Time { return nowTime }
-		defer func() { now = time.Now }()
+		TimeFunc = func() time.Time { return nowTime }
+		defer func() { TimeFunc = time.Now }()
 		timeFormat := nowTime.Format("2006/01/02 15:04:05")
 		obj := &TestTable{Name: "test"}
 		if _, err := db.Insert(obj); err != nil {

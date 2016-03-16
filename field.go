@@ -14,7 +14,7 @@ type TimeStamp struct {
 // BeforeInsert sets current time to CreatedAt and UpdatedAt field.
 // It always returns nil.
 func (ts *TimeStamp) BeforeInsert() error {
-	n := now()
+	n := TimeFunc()
 	ts.CreatedAt = n
 	ts.UpdatedAt = n
 	return nil
@@ -23,6 +23,6 @@ func (ts *TimeStamp) BeforeInsert() error {
 // BeforeUpdate sets current time to UpdatedAt field.
 // It always returns nil.
 func (ts *TimeStamp) BeforeUpdate() error {
-	ts.UpdatedAt = now()
+	ts.UpdatedAt = TimeFunc()
 	return nil
 }

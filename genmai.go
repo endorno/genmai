@@ -951,7 +951,7 @@ func (db *DB) tableValueOf(name string, table interface{}) (rv reflect.Value, rt
 }
 
 func (db *DB) prepare(query string, args ...interface{}) (*sql.Stmt, error) {
-	defer db.logger.Print(now(), query, args...)
+	defer db.logger.Print(TimeFunc(), query, args...)
 	db.m.Lock()
 	defer db.m.Unlock()
 	if db.tx == nil {

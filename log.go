@@ -60,7 +60,7 @@ func (l *templateLogger) Print(start time.Time, query string, args ...interface{
 	}
 	data := map[string]interface{}{
 		"time":     start,
-		"duration": fmt.Sprintf("%.2fms", now().Sub(start).Seconds()*float64(time.Microsecond)),
+		"duration": fmt.Sprintf("%.2fms", TimeFunc().Sub(start).Seconds()*float64(time.Microsecond)),
 		"query":    query,
 	}
 	var buf bytes.Buffer
